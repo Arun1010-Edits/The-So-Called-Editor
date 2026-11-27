@@ -16,6 +16,29 @@ const skills = [
   ['04','VISUAL DESIGN','Layouts, thumbnails, visual systems and supporting assets.','Photoshop · Illustrator'],
 ];
 function Reveal({children, delay=0}) { return <motion.div initial={{opacity:0,y:24}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.15}} transition={{duration:.65,delay,ease:[.22,1,.36,1]}}>{children}</motion.div> }
+
+function CustomCursor() {
+  const [pos, setPos] = React.useState({ x: -100, y: -100 });
+
+  React.useEffect(() => {
+    const move = (e) => {
+      setPos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', move);
+    return () => window.removeEventListener('mousemove', move);
+  }, []);
+
+  return (
+    <div
+      className="cursor-follower"
+      style={{ left: pos.x, top: pos.y }}
+    >
+      <div className="cursor-ring" />
+    </div>
+  );
+}
+
 function Header(){return <header className="nav"><a className="brand" href="#top"><span className="brand-mark">SC.</span><span>THE SO CALLED<br/>EDITOR</span></a><nav><a href="#work">WORK</a><a href="#about">ABOUT</a><a href="#skills">CAPABILITIES</a><a href="#contact">CONTACT</a></nav><a className="nav-cta" href="#contact">LET'S TALK <ArrowUpRight size={14}/></a><a className="mobile-menu" href="#contact"><Menu/></a></header>}
 function App(){return <><Header/><main id="top">
 <section className="hero wrap"><div className="hero-meta"><span><i className="live-dot"/> AVAILABLE FOR SELECT PROJECTS</span><span>VIDEO EDITOR / MOTION DESIGNER</span></div><div className="hero-main"><Reveal><p className="eyebrow">NOT JUST CUTS. CRAFT.</p><h1>THE SO<br/><em>CALLED</em><br/>EDITOR<span className="period">.</span></h1></Reveal><Reveal delay={.12}><div className="hero-side"><div className="hero-orbit"><div className="orbit-ring r1"/><div className="orbit-ring r2"/><div className="orbit-core"><Clapperboard size={35}/></div><span className="orbit-label">FRAME<br/>BY FRAME</span></div><p>I turn raw footage into visual experiences — combining editing, motion design and sound to make stories stay with you.</p><a className="round-link" href="#work">EXPLORE WORK <ArrowDownRight size={17}/></a></div></Reveal></div><div className="hero-bottom"><span>INDEPENDENT CREATIVE / INDIA</span><span>SCROLL TO EXPLORE ↓</span><span>EST. IN EVERY FRAME</span></div></section>
