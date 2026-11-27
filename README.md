@@ -1,27 +1,25 @@
 # The So Called Editor — Portfolio
 
-A responsive, dark editorial-style portfolio starter inspired by the supplied reference website. Built with React, Vite, Framer Motion and Lucide icons.
+A dark, cinematic portfolio for a video editor and motion designer. Built with React, Vite, Framer Motion, Lenis (smooth scroll) and Lucide icons.
 
 ## Run locally
 
 1. Install Node.js (LTS).
-2. Open this folder in VS Code / terminal.
-3. Run `npm install`
-4. Run `npm run dev`
-5. Open the local URL shown in the terminal.
+2. `npm install`
+3. `npm run dev`
 
-## Deploy to Vercel
+## Deploy
 
-1. Create a GitHub repository and upload the contents of this folder.
-2. In Vercel, choose **Add New → Project** and import that repository.
-3. Vercel should detect Vite automatically. Build command: `npm run build`; output directory: `dist`.
-4. Click **Deploy**.
+Vercel detects Vite automatically — build command `npm run build`, output directory `dist`.
 
-## Before publishing — replace placeholders
+## Editing content
 
-- `YOUR_EMAIL@example.com` in `src/main.jsx` with your real contact email.
-- Update Instagram / LinkedIn / YouTube links in the footer.
-- Replace the three designed project-preview panels with your actual video thumbnails or embedded showreel links.
-- Add your final resume, profile photo and verified project details if desired.
+All copy lives in `src/data/content.js`:
 
-The sample project descriptions are portfolio placeholders, not claims of completed client work or measured results.
+- `site.email` and `site.socials` — replace the placeholder email and social links.
+- `projects` — five empty work slots. Add your real titles and video/poster files when ready.
+- `experience`, `skills`, `tools`, `journey` — update with your verified details.
+
+Styles are split into `src/styles/base.css` (tokens), `components.css` (shared UI) and `sections.css` (page sections).
+
+The images in `public/images` are decorative placeholders, not project work.
